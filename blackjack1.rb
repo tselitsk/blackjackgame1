@@ -29,28 +29,26 @@ def make_round(deck)
 end
 
 def calculate(cards)
+
+	arr=cards.map{|e| e[1] }
+
 	total=0
-	count=0
-	cards.each do |suit, value|
-		count++
-		if(value=='Q' || value=='K' || value=='J')
-			blackjackvalue=10
-			total=+blackjackvalue
-		elsif(value=='A')
-			if((total+11)<21)
-			  blackjackvalue=11
-			  total=+blackjackvalue
-			else
-				blackjackvalue=1
-				total=+blackjackvalue
-			end
-		else 
-			blackjackvalue=value.to_i
-			total=+blackjackvalue
+	arr.each do |value|
+		if value=="A"
+			total+=11
+		elsif value.to_i==0 #J,Q,K
+			total+=10
+		else
+			total+=value.to_i
 		end
+
 	end
-	puts "count"+" "count.to_s
-	return total
+
+	arr.select{|e| e=="A"}.count.times do
+		total-=10	if total >21
+	end
+
+		return total
 end
 
 #deal cards
