@@ -1,0 +1,62 @@
+# Write out the detail specs
+# 2. Extract out major nouns: these are your classes
+# 3. extract out major verbs; these are your behaviors/methods
+#nouns
+#Player
+#Card
+#Deck
+#Dealer
+
+class Card
+
+	attr_acessor :suit, :value
+
+	def initialize(suit, value)
+		@suit=suit
+		@value=value
+	end
+
+end # end card
+
+class Deck
+	def initialize
+		suits=['H', 'D','S','C']
+		cards=['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+		suits.product(cards).each do |a|
+			@cards<<Card.new(a[0],a[1])
+	end
+
+	 def shuffle
+	 	@cards.shuffle!
+	 end
+end
+
+end
+
+class Player
+
+end
+
+class Dealer
+
+end
+
+#Engine
+
+class Blackjack
+	def initialize
+		@player=Player.new
+		@deck=Deck.new
+		@dealer=Dealer.new
+	end
+
+	def run
+		#deal_cards
+		#player_goes
+		#who won?
+		#play again
+	end
+
+
+
+end 
