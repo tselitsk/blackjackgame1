@@ -98,3 +98,39 @@ while player_total<21
     	exit
     end
 end
+ 
+# Dealer turn
+if dealer_total==21
+	puts "sorry, dealer hit blackjack"
+	exit
+end
+
+while dealer_total<17
+	#hit
+	round==make_round(deck)
+	dealer<<round
+	puts "Dealing new card for dealer: #{round}"
+	dealer_total=calculate(player)
+
+	if dealertotal==21
+		puts "Sorry, dealer hit blackjack.  You lose."
+	elsif dealertotal>21
+		puts "Congratulations, dealer busted! You win!"
+		exit
+	end
+end
+
+puts "Dealer's cards: "
+dealer.each do |card|
+	puts "=>#{cards}"
+end
+
+puts ""
+
+if dealer_total> player_total
+	puts "Sorry, dealer won"
+elsif dealer_total<player_total
+	puts "Congratulations you won!"
+
+
+
