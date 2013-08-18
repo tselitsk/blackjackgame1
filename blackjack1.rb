@@ -56,22 +56,45 @@ player=[]
 round1=make_round(deck)
 round2=make_round(deck)
 player<<round1<<round2
-total=calculate(player)
-puts "total"+" "+total.to_s
-#player_total=calculate(player)
+player_total=calculate(player)
 
 dealer=[]
 round1=make_round(deck)
 round2=make_round(deck)
 dealer<<round1<<round2
+dealer_total=calculate(player)
 
 #dealer_total=calculate(dealer)
+puts "Dealer has #{dealer[0]} and #{dealer[1]} for a total of #{dealer_total}"
+puts "Player has #{player[0]} and #{player[1]} for a total of #{player_total}"
 
+if player_total==21)
+	puts 'congratulations, you hit blackjack!'
+end
 
+while player_total<21
+	puts "what would you like to do? 1) hit 2) stay"
+	move=gets.chomp
 
+	if !['1','2'].include?(move)
+		puts "Error: you must enter 1 or 2"
+		next
+	end
 
-#puts "Dealer has #{dealer[0]} and #{dealer[1]} for a total of #{dealer_total}"
-puts "Player has #{player[0]} and #{player[1]} for a total of #{total}"
+	if move=="2"
+		put "You chose to stay"
+		break;
+	end
 
-#puts "what would you like to do? 1) hit 2) stay"
-#move=gets.chomp
+	round=make_round(deck)
+	player<<round
+	player_total=calculate(round)
+	puts "your total is now #{player_total}"
+
+    if player_total==21
+    	puts "congratulations, you hit blackjack! You win!"
+    elsif player_total>21
+    	puts "Sorry, it looks like you busted!"
+    	exit
+    end
+end
